@@ -11,13 +11,14 @@ from sklearn.linear_model import ElasticNetCV
 from sklearn.model_selection import train_test_split
 
 # 1. Supongamos que X_features es tu matriz de características extraídas (imágenes o audio)
-# y 'y' es tu variable objetivo.
+# y 'y' es tu variable objetivo, que en nuestro caso serían las categorías de tos y inflamación de garganta.
 # Usando el código anterior podemos meter nuestras matrices en variables
 
+y = ["sin tos", "tos seca", "tos productiva"]
 X_features = mfccs_matrix
 X_features_2 = imagen_matrix
 
-# 2. Estandarizar los datos
+# 2. Estandarizar los datos con StandardScaler()
 
 scaler = StandardScaler()
 X_scaled = scaler.fit_transform(X_features)
