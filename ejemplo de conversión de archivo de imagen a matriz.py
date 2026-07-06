@@ -13,7 +13,7 @@ import numpy as np
 
 imagen = cv2.imread('dataset/imagenes/garganta.jpg')
 
-# Convertir a matriz numérica, en este caso, y a pesar de usar np.array se nos mostrará una estructura más acorde con una matriz que con un array.
+# Convertir a matriz numérica, en este caso, y a pesar de usar np.array se nos mostrará una estructura acorde a una matriz de 3 dimensiones.
 
 imagen_matrix = np.array(imagen)
 
