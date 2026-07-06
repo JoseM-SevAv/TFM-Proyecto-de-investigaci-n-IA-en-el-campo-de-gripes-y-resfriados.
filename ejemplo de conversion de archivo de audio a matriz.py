@@ -13,7 +13,7 @@ import numpy as np
 # Cargamos el archivo de audio y guardamos en dos variables diferentes los valores 
 # que componen la señal (variable: audio) y la frecuencia de muestreo (variable :sr).
 
-audio, sr = librosa.load(librosa.ex("dataset/audios/tos.wav"), sr=None)
+audio, sr = librosa.load("dataset/audios/tos.wav", sr=None)
 
 # Mediante la libreria librosa podemos extraer diferentes caracteristicas del sonido,
 # para este proyecto usaremos MFCC (Mel Frequency Cepstral Coefficients), cuyo objetivo 
