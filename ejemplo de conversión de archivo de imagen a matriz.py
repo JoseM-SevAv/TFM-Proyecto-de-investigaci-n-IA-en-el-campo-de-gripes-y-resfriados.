@@ -13,9 +13,9 @@ import numpy as np
 
 imagen = cv2.imread('dataset/imagenes/garganta.jpg')
 
-# Convertir a matriz numérica
+# Convertir a matriz numérica, en este caso, y a pesar de usar np.array se nos mostrará una estructura más acorde con una matriz que con un array.
 
-imagen_matrix = np.matrix(imagen)
+imagen_matrix = np.array(imagen)
 
 # A partir de aquí, al igual que con los datos de sonido, podemos usar estos datos
 # Para un modelo de elastic net.
