@@ -35,7 +35,7 @@ X_train, X_test, y_train, y_test = train_test_split(
     X_scaled, y_df, test_size=0.2, random_state=42
 )
 
-# Creamos un modelo de clasificación
+# Creamos un modelo de clasificación, lo haremos de grado 3 en este ejemplo porque la mayoría de datos tienen 3 categorías.
 
 grado = 3
 polinomio = sklearn.preprocessing.PolynomialFeatures(degree=grado)
