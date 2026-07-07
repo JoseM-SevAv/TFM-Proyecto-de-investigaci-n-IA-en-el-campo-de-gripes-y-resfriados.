@@ -22,26 +22,25 @@ df = df.dropna() # Eliminamos los valores faltantes si los hubiese
  
 # Seleccionamos variables predictoras y objetivo
 
-X_df = df.drop('Valores categoricos', axis=1)
-X_df = pd.get_dummies(X_df)  # One-hot encoding para variables categóricas
+X_df = df.drop('Valores categoricos', axis=1) 
 y_df = df['Valores categoricos']
 
-# Dividimos en train y test
-X_train_df, X_test_df, y_train_df, y_test_df = train_test_split(
-    X_df, y_df, test_size=0.2, random_state=42
-)
+#Escalado
 
-# Escalado
-scaler_df = StandardScaler() # Objeto que hace el escalado de variables
-X_train_df_scaled = scaler_df.fit_transform(X_train_df) # Calcula los parámetros de escalado y los aplica
-X_test_df_scaled = scaler_df.transform(X_test_df) # Aplica los parámetros calculados previamente en train
+scaler = StandardScaler() # Objeto que hace el escalado de variables
+X_scaled = scaler.fit_transform(X_df) # Calcula los parámetros de escalado y los aplica
+
+# Dividimos en train y test
+X_train, X_test, y_train, y_test = train_test_split(
+    X_scaled, y_df, test_size=0.2, random_state=42
+)
 
 # Creamos un modelo de clasificación
 
 grado = 3
 polinomio = sklearn.preprocessing.PolynomialFeatures(degree=grado)
-X_pol = polinomio.fit_transform(X_train_df_scaled)
-Y_pol = y_train_df
+X_pol = polinomio.fit_transform(X_train)
+Y_pol = y_train
 
 # Entrenamos el modelo con los datos estandarizados
 
