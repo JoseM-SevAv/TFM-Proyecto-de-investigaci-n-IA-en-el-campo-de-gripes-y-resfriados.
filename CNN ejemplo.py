@@ -89,11 +89,11 @@ y_true = test_gen.classes
 # Matriz de confusión
 
 cm = confusion_matrix(y_true, y_pred)
-ConfusionMatrixDisplay(cm, display_labels=['Parasitized','Uninfected']).plot()
+ConfusionMatrixDisplay(cm, display_labels=['sano', 'tos seca', 'tos productiva']).plot()
 plt.title('Matriz de Confusión')
 plt.show()
 
 # Métricas
 
 print(classification_report(y_true, y_pred,
-      target_names=['Uninfected','Parasitized']))
+      target_names=['sano', 'tos seca', 'tos productiva']))
