@@ -9,8 +9,9 @@ import numpy as np
 from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import ElasticNetCV
 from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
 
-# 1. Supongamos que X_features es tu matriz de características extraídas (imágenes o audio)
+# Supongamos que X_features es tu matriz de características extraídas (imágenes o audio)
 # y 'y' es tu variable objetivo, que en nuestro caso serían las categorías de tos y inflamación de garganta.
 # Usando el código anterior podemos meter nuestras matrices en variables
 
@@ -18,16 +19,16 @@ y = ["sin tos", "tos seca", "tos productiva"]
 X_features = mfccs_matrix
 X_features_2 = imagen_matrix
 
-# 2. Estandarizar los datos con StandardScaler()
+# Estandarizamos los datos con StandardScaler()
 
 scaler = StandardScaler()
 X_scaled = scaler.fit_transform(X_features)
 
-# Dividir en datos de entrenamiento y prueba, usaremos 20% de test_size
+# Dividimos el dataset en datos de entrenamiento y prueba, usaremos 20% de test_size
 
 X_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=0.2, random_state=42)
 
-# 3. Entrenar Elastic Net (con validación cruzada para ajustar hiperparámetros)
+# Entrenanamos Elastic Net (con validación cruzada para ajustar hiperparámetros)
 # l1_ratio = 1.0 es Lasso puro, l1_ratio = 0.0 es Ridge puro, por lo que usaremos
 # diferentes l1_ratio entre 0 y 1 para ajustar elastic net.
 
@@ -39,3 +40,9 @@ elastic_net.fit(X_train, y_train)
 print(f"Mejor alpha: {elastic_net.alpha_}")
 print(f"Mejor l1_ratio: {elastic_net.l1_ratio_}")
 print(f"Score en test: {elastic_net.score(X_test, y_test)}")
+
+# Finalmente, evaluamos el modelo.
+
+pred = modelo.predict(X_test)
+
+print("Accuracy:", accuracy_score(y_test, pred))
