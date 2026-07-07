@@ -12,7 +12,7 @@ from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay, classifica
 import matplotlib.pyplot as plt
 import numpy as np
 
-# Tenemos dos carpetas para imagenes y test porque ImageDataGenerator solo permite 
+# Tenemos dos carpetas para imágenes y test porque ImageDataGenerator solo permite 
 # La separación en dos carpetas (train y validation)
 
 BASE_PATH = '/data/content/imagenes'
@@ -22,9 +22,9 @@ TEST_PATH = 'data/content/imagenes_test'
 
 datagen = ImageDataGenerator(rescale=1./255, validation_split=0.25)
 
-# El batch_size indica el calculo de la cantidad de datos que pasan a la vez, se modificará
+# El batch_size indica el cálculo de la cantidad de datos que pasan a la vez, se modificará
 # en función a las necesidades del modelo para evitar el sobreajuste
-# Para datos que tienen mas de 2 tipos de variables indicaremos class_mode='categorical'
+# Para datos que tienen más de 2 tipos de variables indicaremos class_mode='categorical'
 
 train_gen = datagen.flow_from_directory(
     BASE_PATH, target_size=(100,100),
@@ -53,20 +53,20 @@ model = models.Sequential([ # Marcamos cada una de las diferentes capas.
     layers.Flatten(),
     layers.Dense(128, activation='relu'),
     layers.Dropout(0.3),
-    layers.Dense(1, activation='softmax')  # Clasificación multiclase en la ultima capa
+    layers.Dense(3, activation='softmax')  # Clasificación multiclase en la última capa para 3 categorías
 ])
 
 model.compile(optimizer='adam',
               loss='categorical_crossentropy',
-              metrics=['accuracy']) # Optimizador adam, famoso por su estabilidad y rapidez, 
-# función de perdida categorical_crossentropy para datos multiclase
+              metrics=['accuracy']) # Optimizador "adam", famoso por su estabilidad y rapidez, 
+# función de pérdida categorical_crossentropy para datos multiclase
 model.summary()
 
-# Corremos el modelo indicado durante 10 epocas
+# Corremos el modelo indicado durante 10 épocas
 
 history = model.fit(train_gen, epochs=10, validation_data=val_gen)
 
-# Ploteamos la precisión y la función de perdida
+# Ploteamos la precisión y la función de pérdida
 
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12,4))
 
