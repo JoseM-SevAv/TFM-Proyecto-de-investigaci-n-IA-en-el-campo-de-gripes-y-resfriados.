@@ -24,13 +24,13 @@ X_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=0.2, 
 
 # Entrenanamos Elastic Net (con validación cruzada para ajustar hiperparámetros)
 # l1_ratio = 1.0 es Lasso puro, l1_ratio = 0.0 es Ridge puro, por lo que usaremos
-# diferentes l1_ratio entre 0 y 1 para ajustar elastic net.
+# diferentes l1_ratio entre 0 y 1 para ajustar elastic net, para este ejemplo usamos 0.5.
 
-elastic_net = ElasticNetCV(l1_ratio=[0.1, 0.5, 0.7, 0.9, 0.95, 0.99, 1], cv=5, random_state=42)
+elastic_net = ElasticNetCV(l1_ratio=0.5, cv=5, random_state=42)
 elastic_net.fit(X_train, y_train)
 
 # Resultados
 
-print(f"Mejor alpha: {elastic_net.alpha_}")
-print(f"Mejor l1_ratio: {elastic_net.l1_ratio_}")
+print(f"alpha: {elastic_net.alpha_}")
+print(f"l1_ratio: {elastic_net.l1_ratio_}")
 print(f"Score en test: {elastic_net.score(X_test, y_test)}")
