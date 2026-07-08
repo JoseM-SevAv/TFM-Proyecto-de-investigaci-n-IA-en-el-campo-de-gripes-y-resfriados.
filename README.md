@@ -1,3 +1,5 @@
 # TFM-Proyecto-de-investigaci-n-IA-en-el-campo-de-gripes-y-resfriados.
 
 Repositorio dedicado al TFM: Proyecto de investigación: IA en el campo de gripes y resfriados. En este repositorio se encontrarán diversos ejemplos de archivos R script y .py que se aplicarían al proyecto usando datos ficticios.
+
+Los [ejemplo de conversion de archivo de audio a array.py](https://github.com/JoseM-SevAv/TFM-Proyecto-de-investigaci-n-IA-en-el-campo-de-gripes-y-resfriados./blob/main/ejemplo%20de%20conversion%20de%20archivo%20de%20audio%20a%20array.py) y [ejemplo de conversión de archivo de imagen a array.py](https://github.com/JoseM-SevAv/TFM-Proyecto-de-investigaci-n-IA-en-el-campo-de-gripes-y-resfriados./blob/main/ejemplo%20de%20conversi%C3%B3n%20de%20archivo%20de%20imagen%20a%20array.py) muestran como convertir a formato array dichos archivos para posteriores operaciones, tales como Elastic Net para obtener las características de dichos archivos y filtrar estos archivos en función de su variabilidad.
