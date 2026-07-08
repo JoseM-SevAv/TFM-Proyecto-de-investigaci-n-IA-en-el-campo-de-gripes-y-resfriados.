@@ -31,7 +31,7 @@ train_gen = datagen.flow_from_directory(
     batch_size=32, class_mode='categorical', subset='training', seed=42
 )
 val_gen = datagen.flow_from_directory(
-    BASE_PATH, target_size=(100,100),
+    TEST_PATH, target_size=(100,100),
     batch_size=32, class_mode='categorical', subset='validation', seed=42
 )
 
